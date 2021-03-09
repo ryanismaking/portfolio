@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Head from 'next/head'
 import Image from 'next/image'
 import Layout from "../components/layout"
+import { getSortedPostsData } from '../lib/posts'
 
 const Avatar = () => (
   <Image
@@ -12,7 +13,17 @@ const Avatar = () => (
   />
 )
 
-export default function Home() {
+
+export async function getStaticProps() {
+  const allPostsData = getSortedPostsData()
+  return {
+    props: {
+      allPostsData
+    }
+  }
+}
+
+export default function Home({ allPostsData }) {
   return (
     <Layout>
       <Head>
@@ -32,6 +43,17 @@ export default function Home() {
         </p>
 
         <h2>Featured work</h2>
+        <ul>
+          {allPostsData.map(({ id, date, title }) => (
+            <li key={id}>
+              {title}
+              <br />
+              {id}
+              <br />
+              {date}
+            </li>
+          ))}
+        </ul>
       </main>
     </Layout>
   )
