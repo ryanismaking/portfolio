@@ -1,5 +1,6 @@
 ---
 title: Making Theatre and Getting Sleep
+featured: false
 date: "2018-02-26"
 description: I saw an opportunity to help stage managers take notes about their theatre productions digitally, with the aim of saving valuable time during rehearsals.
 ---

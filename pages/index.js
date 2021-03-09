@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Head from 'next/head'
 import Image from 'next/image'
 import Layout from "../components/layout"
-import { getSortedPostsData } from '../lib/posts'
+import { getFeaturedSortedPostsData } from '../lib/posts'
 
 const Avatar = () => (
   <Image
@@ -15,7 +15,7 @@ const Avatar = () => (
 
 
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData()
+  const allPostsData = getFeaturedSortedPostsData()
   return {
     props: {
       allPostsData
@@ -42,7 +42,7 @@ export default function Home({ allPostsData }) {
           I’m a passionate product designer with a dark secret: I used to be a developer. I love Star Trek, Nintendo, teaching group fitness dance classes, and escaping rooms.
         </p>
 
-        <h2>Featured work</h2>
+        {allPostsData.length > 0 && <h2>Featured work</h2>}
         <ul>
           {allPostsData.map(({ id, date, title }) => (
             <li key={id}>
