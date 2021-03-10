@@ -3,11 +3,12 @@ import { createGlobalStyle } from "styled-components"
 const GlobalStyle = createGlobalStyle`
   html,
   body {
+    color: #232323;
+    font-size: 16px;
+    background-color: #f8f8f8;
     padding: 0;
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-      Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-      sans-serif;
+    font-family: 'Source Serif Pro', serif;
   }
 
   * {
