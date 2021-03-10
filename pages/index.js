@@ -89,9 +89,9 @@ export default function Home({ allPostsData }) {
         <H2>Elsewhere</H2>
 
         <UL>
-          <LI><Icon src="images/twitter.svg" /><a href="https://twitter.com/ryanismaking">I tweet about design to get better at design.</a></LI>
-          <LI><Icon src="images/linkedin.svg" /><a href="https://www.linkedin.com/in/rtessier/">I enjoy networking with design folk.</a></LI>
-          <LI><Icon src="images/github.svg" /><a href="https://github.com/ryanismaking">I continue to code so I get to design more stuff.</a></LI>
+          <LI><Icon src="images/twitter.svg" alt="Twitter" /><a href="https://twitter.com/ryanismaking">I tweet about design to get better at design.</a></LI>
+          <LI><Icon src="images/linkedin.svg" alt="LinkedIn" /><a href="https://www.linkedin.com/in/rtessier/">I enjoy networking with design folk.</a></LI>
+          <LI><Icon src="images/github.svg" alt="GitHub" /><a href="https://github.com/ryanismaking">I continue to code so I get to design more stuff.</a></LI>
         </UL>
 
         {/* {allPostsData.length > 0 && <H2>Featured work</H2>}
