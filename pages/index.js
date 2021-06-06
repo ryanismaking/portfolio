@@ -1,63 +1,7 @@
 import Link from 'next/link'
-import Head from 'next/head'
 import Image from 'next/image'
 import Layout from "../components/layout"
 import { getFeaturedSortedPostsData } from '../lib/posts'
-import styled from "styled-components"
-
-const Main = styled.main`
-  margin: 10%;
-`
-
-const H1 = styled.h1`
-  font-size: 24px;
-  font-weight: 900;
-  margin: 0;
-
-  a { 
-    text-decoration: none; 
-    color: #232323; 
-  }
-`
-
-const H2 = styled.h2`
-  font-size: 20px;
-  font-weight: 900;
-  margin: 0 0 12px 0;
-`
-
-const Introduction = styled.div`
-  font-size: 24px;
-  line-height: 36px;
-  margin: 36px 0;
-  max-width: 400px;
-  
-  p { 
-    margin: 20px 0;
-  }
-`
-
-const UL = styled.ul`
-  list-style-type: none;
-  padding-inline-start: 0;
-  margin: 0;
-`
-
-const LI = styled.li`
-  line-height: 24px;
-  display: flex;
-  align-items: start;
-  margin-bottom: 4px;
-
-  a {
-    color: #1478AF;
-  }
-`
-
-const Icon = styled.img`
-  margin-top: 4px;
-  margin-right: 12px;
-`
 
 export async function getStaticProps() {
   const allPostsData = getFeaturedSortedPostsData()
@@ -71,43 +15,55 @@ export async function getStaticProps() {
 export default function Home({ allPostsData }) {
   return (
     <Layout>
-      <Head>
-        <title>Ryan is Making</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <div className="introduction">
+      <h1 className="introduction-heading">Show me a good problem.</h1>
 
-      <Main>
-        <H1>
-          <Link href="/">Ryan Tessier</Link>
-        </H1>
+      <div className="introduction-text">
+        <p>I’m Ryan—a fledgling product designer from Melbourne who cares about 
+        creating thoughtful products which balance businesses’ need for 
+        sustainability with customers’ desire for progress.</p>
+        <p>Currently, I help scale great design in <a href="https://realestate.com.au">
+        realestate.com.au</a>’s design ops team. We give our designers and 
+        engineers a leg up so they can make 
+        awesome shiz. Together, we help millions of Australians find their 
+        forever homes.</p>
+      </div>
+    </div>
 
-        <Introduction>
-          <p>I’m a passionate product designer with a dark secret: I used to be a developer.</p>
-          <p>I love Star Trek, Nintendo, teaching group fitness dance classes, and escaping rooms.</p>
-        </Introduction>
+      <h2 className="section-heading">Selected work</h2>
+      <ul className="work-list">
+        {allPostsData.map(({ id, date, title }) => (
+          <li key={id}>
+            <Link href={`/posts/${id}`}>{title}</Link>
+          </li>
+        ))}
+      </ul>
 
-        <H2>Elsewhere</H2>
+      <style jsx>{`
+        .introduction {
+          margin: 8rem 0 6rem 0;
+        }
 
-        <UL>
-          <LI><Icon src="images/twitter.svg" alt="Twitter" /><a href="https://twitter.com/ryanismaking">I tweet about design to get better at design.</a></LI>
-          <LI><Icon src="images/linkedin.svg" alt="LinkedIn" /><a href="https://www.linkedin.com/in/rtessier/">I enjoy networking with design folk.</a></LI>
-          <LI><Icon src="images/github.svg" alt="GitHub" /><a href="https://github.com/ryanismaking">I continue to code so I get to design more stuff.</a></LI>
-        </UL>
+        .introduction-heading {
+          font-size: 5rem;
+          line-height: 5rem;
+        }
 
-        {/* {allPostsData.length > 0 && <H2>Featured work</H2>}
-        <ul>
-          {allPostsData.map(({ id, date, title }) => (
-            <li key={id}>
-              {title}
-              <br />
-              {id}
-              <br />
-              {date}
-            </li>
-          ))}
-        </ul> */}
+        .introduction-text {
+          font-size: 1.5rem;
+          line-height: 2rem;
+        }
 
-      </Main>
+        .section-heading {
+          font-size: 2rem;
+          line-height: 3rem;
+        }
+
+        .work-list {
+          list-style: none;
+          padding-inline-start: 0;
+        }
+      `}</style>
     </Layout>
   )
 }

@@ -1,11 +1,18 @@
 import Layout from '../../components/layout'
-import { getAllPostIds, getPostData } from '../../lib/posts'
+import Link from 'next/link'
+import Head from 'next/head'
+import { getAllPostIds, getPostById, markdownToHtml } from '../../lib/posts'
 
 export async function getStaticProps({ params }) {
-  const postData = getPostData(params.id)
+  const post = getPostById(params.id)
+  const content = await markdownToHtml(post.content)
+
   return {
     props: {
-      postData
+      post: {
+        ...post,
+        content,
+      }
     }
   }
 }
@@ -18,14 +25,11 @@ export async function getStaticPaths() {
   }
 }
 
-export default function Post({ postData }) {
+export default function Post({ post }) {
   return (
     <Layout>
-      {postData.title}
-      <br />
-      {postData.id}
-      <br />
-      {postData.date}
+      <h1 className="post-title">{post.meta.title}</h1>
+      <div className="post-body" dangerouslySetInnerHTML={{ __html: post.content}} />
     </Layout>
   )
 }

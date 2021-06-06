@@ -15,7 +15,7 @@ Stage managers are responsible for maintaining the artistic integrity of the sho
 
 The stage manager learns where particular lighting, sound, and other technical effects should happen and notes these effects, which they call _cues_, in their copy of the script. It’s critical they refer back to these notes to cue the other members of the crew, like me, when to do their jobs—keeping everyone synchronised.
 
-![Spamalot cues](./spamalot.jpg)
+![Spamalot cues](/images/spamalot.jpg)
 
 The demands placed on stage managers by a tight schedule mean that they rush to get their notes done as they learn new information, which can sometimes lead to poor legibility. This isn’t acceptable, as this is the only copy of notes about how things should work on stage during the show. So, they have to stay up late to rewrite or retype any notes that are confusing or illegible.
 
